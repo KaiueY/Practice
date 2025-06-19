@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Position</title>
+    <style>
+        .cantaoner1{
+            margin-top: 20px;
+            height: 120px;
+            background-color: aquamarine;
+            position: relative;
+        }
+        .content1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            left: 50%;
+            top: 50%;
+            position: absolute;
+            transform: translate(-50%, -50%);
+        }
+
+        .cantainer2{
+            margin-top: 20px;
+            height: 120px;
+            background-color: aquamarine;
+        }
+        .content2{
+            width: 200px;
+            margin: 0 auto;
+            background-color: red;
+            text-align: center;
+        }
+
+        .cantainer3{
+            margin-top: 20px;
+            height: 120px;
+            background-color: aquamarine;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .content3{
+            width: 50px;
+            height: 50px;
+            background-color: red;
+        }
+
+        .cantainer4{
+            margin-top: 20px;
+            height: 220px;
+            position: relative;
+            background-color: aquamarine;
+        }
+        .content4{
+           
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Position</h1>
+        <div class="cantaoner1">
+            <div class="content1"></div>
+        </div>
+        <h1>Margin</h1>
+        <div class="cantainer2">
+            <div class="content2">
+                <span>This is centered by margin</span>
+            </div>
+        </div>
+
+        <h1>Flex</h1>
+        <div class="cantainer3">
+            <div class="content3">
+            </div>
+        </div>
+
+        <h1>Transform</h1>
+        <div class="cantainer4">
+            <div class="content4">asdas 
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
