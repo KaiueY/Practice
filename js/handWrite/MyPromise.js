@@ -83,18 +83,78 @@ class MyPromise {
 		promises = [...promises]
 		const result = []
 		let count = 0
-		
+
 		return new Promise((resolve, reject) => {
-			if(promises.length===0)resolve(result)
+			if (promises.length === 0) resolve(result)
 			promises.forEach((promise, index) => {
-					Promise.resolve(promise).then(res => {
-						result[index] = res
-						count++
-						if (count >= promises.length) {
-							resolve(result)
-						}
-					},reject)
+				Promise.resolve(promise).then(res => {
+					result[index] = res
+					count++
+					if (count >= promises.length) {
+						resolve(result)
+					}
+				}, reject)
 			})
+		})
+	}
+
+	static allSettled(promises) {
+		if (promises.length === 0) resolve(result)
+		promises = [...promises]
+		const result = []
+		let count = 0
+		return new Promise((resolve, _) => {
+			promises.forEach((promise, index) => {
+				Promise.resolve(promise).then(
+					value => {
+						result[index] = {
+							status: FULFILLED,
+							value
+						}
+					},
+					reason => {
+						result[index] = {
+							status: REJECTED,
+							value: reason
+						}
+					}
+				).finally(() => {
+					count++
+					if (count === promises.length) {
+						resolve(result)
+					}
+				})
+			});
+		})
+	}
+
+	static any(promises) {
+		promises = [...promises]
+		let settled = false
+		if (promises.length === 0) {
+			return Promise.reject(new AggregateError([], ''))
+		}
+		const onRejected = []
+		let result
+		let count = 0
+		return new Promise((resolve, reject) => {
+			promises.forEach((promise) => {
+				Promise.resolve(promise).then(
+					(value) => {
+						if (!settled) {
+							settled = true
+							resolve(value)
+						}
+					},
+					reason => {
+						onRejected.push(reason)
+						if (++count == promises.length && !settled) {
+							settled = true
+							reject(new AggregateError(onRejected, 'All were rejected'))
+						}
+					}
+				)
+			});
 		})
 	}
 
@@ -138,19 +198,6 @@ class MyPromise {
 	}
 }
 
-// MyPromise.resolve(
-// 	new Promise((resolve,reject)=>{
-// 		reject(2)
-// 	})
-// ).then(
-// 	res=>{
-// 	console.log(res)
-// },
-// err=>{
-// 	console.log('err',err)
-// }
-
-// )
 MyPromise.reject(221).then(null, err => {
 	console.log(err, 'err');
 
