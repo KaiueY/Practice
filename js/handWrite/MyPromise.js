@@ -158,6 +158,33 @@ class MyPromise {
 		})
 	}
 
+	static race(promises) {
+		promises = [...promises];
+		if (promises.length === 0) {
+			return new Promise(() => {});
+		}
+
+		let settled = false;
+		return new Promise((resolve, reject) => {
+			for (const promise of promises) {
+				Promise.resolve(promise).then(
+					value => {
+						if (!settled) {
+							settled = true;
+							resolve(value);
+						}
+					},
+					reason => {
+						if (!settled) {
+							settled = true;
+							reject(reason);
+						}
+					}
+				)
+			}
+		})
+	}
+
 	then(onFulfilled, onRejected) {
 		return new MyPromise((resolve, reject) => {
 			this.#handlers.push(() => {
