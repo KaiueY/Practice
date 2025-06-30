@@ -68,11 +68,13 @@ class MyPromise {
 			}
 		})
 	}
+
 	static reject(reason) {
 		return new Promise((_, reject) => {
 			reject(reason)
 		})
 	}
+
 	static try(func, ...args) {
 		return new Promise((resolve) => {
 			resolve(func(...args))
