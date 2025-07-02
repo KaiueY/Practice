@@ -137,7 +137,6 @@ class MyPromise {
 			return Promise.reject(new AggregateError([], ''))
 		}
 		const onRejected = []
-		let result
 		let count = 0
 		return new Promise((resolve, reject) => {
 			promises.forEach((promise) => {
