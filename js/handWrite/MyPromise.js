@@ -85,7 +85,6 @@ class MyPromise {
 		promises = [...promises]
 		const result = []
 		let count = 0
-
 		return new Promise((resolve, reject) => {
 			if (promises.length === 0) resolve(result)
 			promises.forEach((promise, index) => {
@@ -228,5 +227,4 @@ class MyPromise {
 
 MyPromise.reject(221).then(null, err => {
 	console.log(err, 'err');
-
 })
