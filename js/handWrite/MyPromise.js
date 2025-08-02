@@ -2,7 +2,6 @@ const PENDING = 'pending'
 const FULFILLED = 'fulfilled'
 const REJECTED = 'rejected'
 
-
 function runMicrotask(fn) {
 	if (typeof queueMicrotask === 'function') {
 		queueMicrotask(fn)
