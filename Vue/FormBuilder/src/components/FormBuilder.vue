@@ -12,7 +12,6 @@
           v-model:value="modelValue[item.key]"
           ></component>
         </a-form-item>
-
     </a-form>
 </template>
 
