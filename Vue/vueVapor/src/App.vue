@@ -7,10 +7,13 @@ const {count, inc} = useCounter()
 </script>
 
 <template>
-	<h1>hello</h1>
-	<div><Hello/></div>
-	<div>count is {{ count }}</div>
-	<button @click="inc">click me </button>
+	<div class="main">
+
+		<h1>hello</h1>
+		<div><Hello/></div>
+		<div>count is {{ count }}</div>
+		<button @click="inc">click me </button>
+	</div>
 </template>
 
 <style scoped>
