@@ -13,7 +13,7 @@ export default function defineAsyncComponent(options) {
   } = options;
 
   return {
-    setup(_, { slots , attrs }) {
+    setup(_, { slots, attrs }) {
       const component = shallowRef(loadingComponent);
       const loadComponent = () => {
         return new Promise((resolve, reject) => {
@@ -26,7 +26,7 @@ export default function defineAsyncComponent(options) {
         });
       };
       loadComponent()
-        .then((com) => {
+        .then((com :any) => {
           if (com && com[Symbol.toStringTag] === "Module") {
             com = com.default;
           }
