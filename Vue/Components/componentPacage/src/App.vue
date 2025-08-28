@@ -26,7 +26,6 @@ const handleClick = () => {
   <div class="w-full h-screen items-center content-center flex flex-col">
     <MyInput
       ref="inputRef"
-      kailin="hello"
       v-model="messages"
     >
     <template #prepend>

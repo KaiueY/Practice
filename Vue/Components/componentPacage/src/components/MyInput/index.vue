@@ -1,24 +1,31 @@
 <script setup lang="ts">
-import { type InputProps, ElInput } from "element-plus";
-import { getCurrentInstance, h, 
-  // useAttrs, 
-  useSlots 
+import {
+  // type InputProps,
+  ElInput,
+} from "element-plus";
+import {
+  getCurrentInstance,
+  h,
+  // useAttrs,
+  useSlots,
+  type ComponentInstance,
 } from "vue";
 
-interface MyInputProps extends Partial<InputProps> {
-  kailin?: string;
-}
-const props = defineProps<Partial<MyInputProps>>();
+// interface MyInputProps extends Partial<InputProps> {
+//   kailin?: string;
+// }
+// const props = defineProps<Partial<MyInputProps>>();
+const props = defineProps();
 const slots = useSlots();
 // const attrs = useAttrs();
 
 const vm = getCurrentInstance();
-console.log("kailin=>", props.kailin);
 
 const changeRef = (instance: any) => {
   console.log("vm=>", vm);
   vm!.exposed = vm!.exposeProxy = instance || {};
 };
+defineExpose({} as ComponentInstance<typeof ElInput>);
 </script>
 <template>
   <div class="my-input">
@@ -34,4 +41,4 @@ const changeRef = (instance: any) => {
   margin: auto;
   width: 200px;
 }
-</style> 
+</style>
