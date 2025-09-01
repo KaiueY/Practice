@@ -1,6 +1,6 @@
 <script setup lang="ts">
 defineProps<{
-  list;
+  list: { title: string; value: string }[];
 }>();
 </script>
 <template>
