@@ -1,30 +1,41 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import MyInput from "./components/MyInput/index.vue";
+import MyButton from "./components/MyButton/index.vue";
 import { message } from "./utils/message";
 
 const inputRef = ref();
 const messages = ref("hellow world");
 const value1 = ref(0);
-setTimeout(() => {
-  console.log("inputRef==>", inputRef);
-  inputRef.value.clear();
-}, 1000);
-
-const handleClick = () => {
-  message.notify({
-    title: "通知标题",
-    message: "右下角通知",
-    position: "bottom-right",
-  });
-  message.info("信息");
-  message.success("成功");
+// setTimeout(() => {
+//   console.log("inputRef==>", inputRef);
+//   inputRef.value.clear();
+// }, 1000);
+const getData = () => {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve({
+        data: "some data"
+      })
+    }, 2000)
+  })
+}
+const handleClick = async () => {
+  // message.notify({
+  //   title: "通知标题",
+  //   message: "右下角通知",
+  //   position: "bottom-right",
+  // });
+  // message.info("信息");
+  // message.success("成功");
+  await getData()
 };
+
 </script>
 
 <template>
   <div class="w-full h-screen items-center content-center flex flex-col">
-    <MyInput
+    <!-- <MyInput
       ref="inputRef"
       v-model="messages"
     >
@@ -38,7 +49,8 @@ const handleClick = () => {
     <div class="slider-demo-block">
       <span class="demonstration">Default value</span>
       <el-slider v-model="value1" />
-    </div>
+    </div> -->
+    <MyButton :round="true" type="info" @click="handleClick">MyButton</MyButton>
   </div>
 </template>
 

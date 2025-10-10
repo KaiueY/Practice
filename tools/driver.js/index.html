@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>driver.js</title>
+
+        <script src="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.js.iife.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.css"/>
+</head>
+<body>
+    <h1>driver.js</h1>
+    <p>driver.js is a library for creating guided tours in web applications.</p>
+    <p>For more information, visit the <a href="https://github.com/kamranahmedfo/driver.js">driver.js GitHub repository</a>.</p>
+    <div>
+        <button id="start-tour">Start Tour</button>
+    </div>
+    <div>
+        <button id="stop-tour">Stop Tour</button>
+    </div>
+    <div>
+        <button id="reset-tour">Reset Tour</button>
+    </div>
+        <script src="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.js.iife.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.css"/>
+<script>
+    const driver = window.driver.js.driver;
+    const driverObj = driver();
+    console.log(driverObj);
+    driverObj.highlight({
+        element: '#start-tour',
+        popover: {
+            title: 'Start Tour',
+            description: 'Click this button to start the guided tour.',
+            position: 'top'
+        }
+    });
+    
+</script>
+</body>
+
+</html>

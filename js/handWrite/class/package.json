@@ -1,0 +1,6 @@
+{
+  "type": "module",
+  "name": "class-demo",
+  "version": "1.0.0",
+  "description": "ES6 class import/export demo"
+}

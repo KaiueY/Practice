@@ -22,7 +22,6 @@ const slots = useSlots();
 const vm = getCurrentInstance();
 
 const changeRef = (instance: any) => {
-  console.log("vm=>", vm);
   vm!.exposed = vm!.exposeProxy = instance || {};
 };
 defineExpose({} as ComponentInstance<typeof ElInput>);
